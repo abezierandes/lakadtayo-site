@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Join me on Lakad Tayo</title>
+    <meta name="description" content="You're invited to walk together on Lakad Tayo." />
+    <meta property="og:title" content="Join me on Lakad Tayo" />
+    <meta property="og:description" content="Tap to connect as walking buddies." />
+    <meta property="og:image" content="https://abezierandes.github.io/lakadtayo-site/icon.png" />
+    <!-- Invite codes are one-time and expire, so keep these pages out of search. -->
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="../icon.png" />
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+      .code {
+        display: inline-block;
+        margin: 4px 0 20px;
+        padding: 10px 18px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: var(--card);
+        font: 700 28px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace;
+        letter-spacing: 0.12em;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin: 8px 0 28px;
+      }
+      .button {
+        display: inline-block;
+        padding: 12px 20px;
+        border-radius: 999px;
+        font-weight: 700;
+        text-decoration: none;
+      }
+      .primary {
+        background: var(--forest);
+        color: var(--cream);
+      }
+      .secondary {
+        border: 1px solid var(--border);
+        color: var(--text);
+      }
+      @media (prefers-color-scheme: dark) {
+        .primary {
+          background: var(--lime);
+          color: #034e1d;
+        }
+      }
+      [hidden] {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <img src="../icon.png" alt="" />
+        <a href="../">Lakad Tayo</a>
+      </header>
+
+      <section id="invite" class="hero" hidden>
+        <h1>You're invited to walk together.</h1>
+        <p>Your invite code:</p>
+        <div class="code" id="code"></div>
+        <div class="actions">
+          <a class="button primary" id="open" href="#">Open in Lakad Tayo</a>
+          <a
+            class="button secondary"
+            href="https://apps.apple.com/app/lakad-tayo/id6829154404"
+            >Get the app</a
+          >
+        </div>
+        <p>
+          Don't have the app yet? Install it, sign in on the Buddies tab, and
+          enter the code above. Codes expire after 7 days.
+        </p>
+      </section>
+
+      <section id="missing" class="hero" hidden>
+        <h1>This invite link isn't complete.</h1>
+        <p>
+          Ask your buddy to send it again, or enter their code on the Buddies
+          tab in <a href="../">Lakad Tayo</a>.
+        </p>
+      </section>
+    </main>
+    <script>
+      // Same alphabet as the server's invite codes.
+      var code = (new URLSearchParams(location.search).get('c') || '')
+        .toUpperCase()
+        .replace(/[^A-Z0-9]/g, '');
+      if (code.length === 8) {
+        document.getElementById('code').textContent = code;
+        document.getElementById('open').href = 'lakadtayo://invite?c=' + code;
+        document.getElementById('invite').hidden = false;
+      } else {
+        document.getElementById('missing').hidden = false;
+      }
+    </script>
+  </body>
+</html>
