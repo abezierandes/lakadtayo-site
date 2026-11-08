@@ -13,42 +13,48 @@
     <link rel="icon" href="../icon.png" />
     <link rel="stylesheet" href="../style.css" />
     <style>
+      /* Sits on the dark green .hero card in both themes. */
+      .hero .label {
+        margin-top: 20px;
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
       .code {
         display: inline-block;
-        margin: 4px 0 20px;
-        padding: 10px 18px;
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        background: var(--card);
-        font: 700 28px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace;
-        letter-spacing: 0.12em;
+        margin: 8px 0 24px;
+        padding: 12px 20px;
+        border: 1px solid rgba(193, 241, 90, 0.35);
+        border-radius: 14px;
+        background: rgba(0, 0, 0, 0.22);
+        color: var(--lime);
+        font: 700 30px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace;
+        letter-spacing: 0.14em;
+        user-select: all;
       }
       .actions {
         display: flex;
         flex-wrap: wrap;
         gap: 12px;
-        margin: 8px 0 28px;
       }
       .button {
         display: inline-block;
-        padding: 12px 20px;
+        padding: 13px 22px;
         border-radius: 999px;
         font-weight: 700;
         text-decoration: none;
       }
       .primary {
-        background: var(--forest);
-        color: var(--cream);
+        background: var(--lime);
+        color: #034e1d;
       }
       .secondary {
-        border: 1px solid var(--border);
-        color: var(--text);
+        border: 1.5px solid rgba(247, 247, 240, 0.6);
+        color: #f7f7f0;
       }
-      @media (prefers-color-scheme: dark) {
-        .primary {
-          background: var(--lime);
-          color: #034e1d;
-        }
+      .hero a:not(.button) {
+        color: var(--lime);
       }
       [hidden] {
         display: none !important;
@@ -62,23 +68,26 @@
         <a href="../">Lakad Tayo</a>
       </header>
 
-      <section id="invite" class="hero" hidden>
-        <h1>You're invited to walk together.</h1>
-        <p>Your invite code:</p>
-        <div class="code" id="code"></div>
-        <div class="actions">
-          <a class="button primary" id="open" href="#">Open in Lakad Tayo</a>
-          <a
-            class="button secondary"
-            href="https://apps.apple.com/app/lakad-tayo/id6829154404"
-            >Get the app</a
-          >
-        </div>
+      <div id="invite" hidden>
+        <section class="hero">
+          <h1>You're invited to walk together.</h1>
+          <p class="label">Your invite code</p>
+          <div class="code" id="code"></div>
+          <div class="actions">
+            <a class="button primary" id="open" href="#">Open in Lakad Tayo</a>
+            <a
+              class="button secondary"
+              href="https://apps.apple.com/app/lakad-tayo/id6829154404"
+              >Get the app</a
+            >
+          </div>
+        </section>
         <p>
-          Don't have the app yet? Install it, sign in on the Buddies tab, and
-          enter the code above. Codes expire after 7 days.
+          New to Lakad Tayo? Get the app, sign in on the Buddies tab, then tap
+          this link again or enter the code there. Codes work once and expire
+          after 7 days.
         </p>
-      </section>
+      </div>
 
       <section id="missing" class="hero" hidden>
         <h1>This invite link isn't complete.</h1>
